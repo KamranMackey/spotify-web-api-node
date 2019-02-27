@@ -340,6 +340,20 @@ SpotifyWebApi.prototype = {
   },
 
   /**
+   * 
+   * @param {string} query The search query. 
+   * @param {Object} options The possible options.
+   * @param {requestCallback} callback Optional callback method to be called instead of the promise.
+   * @example searchPodcasts('The Daily', { limit: 1, offset: 0}).then(...)
+   * @returns {Promise|undefined} A promise that if successful, returns an object containing the
+   *          search results. The result is paginated. If the promise is rejected,
+   *          it contains an error object. Not returned if a callback is given. 
+   */
+  searchPodcasts: function(query, options, callback) {
+    return this.search(query, ['show'], options, callback);
+  },
+
+  /**
    * Get an artist's albums.
    * @param {string} artistId The artist's ID.
    * @options {Object} [options] The possible options, e.g. limit, offset.
