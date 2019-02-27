@@ -261,7 +261,7 @@ SpotifyWebApi.prototype = {
    * Search for music entities of certain types.
    * @param {string} query The search query.
    * @param {string[]} types An array of item types to search across.
-   * Valid types are: 'album', 'artist', 'playlist', 'track', and 'podcast'.
+   * Valid types are: 'album', 'artist', 'playlist', 'track', and 'show'.
    * @param {Object} [options] The possible options, e.g. limit, offset.
    * @param {requestCallback} [callback] Optional callback method to be called instead of the promise.
    * @example search('Abba', ['track', 'playlist'], { limit : 5, offset : 1 }).then(...)
@@ -340,7 +340,7 @@ SpotifyWebApi.prototype = {
   },
 
   /**
-   * Search for podcasts (shows).
+   * Search for shows.
    * WARNING: This search type is undocumented.
    * @param {string} query The search query. 
    * @param {Object} options The possible options.
@@ -350,7 +350,7 @@ SpotifyWebApi.prototype = {
    *          search results. The result is paginated. If the promise is rejected,
    *          it contains an error object. Not returned if a callback is given. 
    */
-  searchPodcasts: function (query, options, callback) {
+  searchShows: function (query, options, callback) {
     return this.search(query, ['show'], options, callback);
   },
 
@@ -502,6 +502,23 @@ SpotifyWebApi.prototype = {
       .withQueryParameters(options)
       .build()
       .execute(HttpManager.get, callback);
+  },
+
+  /**
+   * Get a show.
+   * @param {string} showId The show's ID.
+   * @param {Object} [options] The options supplied to this request.
+   * @param {requestCallback} [callback] Optional callback method to be called instead of the promise.
+   * @example getShow('0ofXAdFIQQRsCYj9754UFx').then(...)
+   * @returns {Promise|undefined} A promise that if successful, resolves to an object containing
+   *          the show. If rejected, it contains an error object. Not returned if a callback is given.
+   */
+  getShow: function (showId, options, callback) {
+    return WebApiRequest.builder(this.getAccessToken())
+      .withPath('/v1/shows/' + showId)
+      .withQueryParameters(options)
+      .build()
+      .executte(HttpManager.get, callback)
   },
 
   /**
