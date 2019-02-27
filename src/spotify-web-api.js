@@ -518,7 +518,7 @@ SpotifyWebApi.prototype = {
       .withPath('/v1/shows/' + showId)
       .withQueryParameters(options)
       .build()
-      .executte(HttpManager.get, callback)
+      .execute(HttpManager.get, callback)
   },
 
   /**
