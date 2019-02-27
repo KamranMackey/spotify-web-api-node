@@ -261,7 +261,7 @@ SpotifyWebApi.prototype = {
    * Search for music entities of certain types.
    * @param {string} query The search query.
    * @param {string[]} types An array of item types to search across.
-   * Valid types are: 'album', 'artist', 'playlist', and 'track'.
+   * Valid types are: 'album', 'artist', 'playlist', 'track', and 'podcast'.
    * @param {Object} [options] The possible options, e.g. limit, offset.
    * @param {requestCallback} [callback] Optional callback method to be called instead of the promise.
    * @example search('Abba', ['track', 'playlist'], { limit : 5, offset : 1 }).then(...)
