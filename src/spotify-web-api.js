@@ -340,7 +340,7 @@ SpotifyWebApi.prototype = {
   },
 
   /**
-   * 
+   * Search for podcasts.
    * @param {string} query The search query. 
    * @param {Object} options The possible options.
    * @param {requestCallback} callback Optional callback method to be called instead of the promise.
