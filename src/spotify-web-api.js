@@ -550,13 +550,13 @@ SpotifyWebApi.prototype = {
    * episodes in the show. If rejected, it contains an error object. Not returned if a callback is
    * given.
    */
-  getShowEpisodes: function(showId, options, callback) {
+  getShowEpisodes: function (showId, options, callback) {
     return WebApiRequest.builder(this.getAccessToken())
-    .withPath('/v1/shows/' + showId + '/episodes')
-    .withQueryParameters(options)
-    .build()
-    .execute(HttpManager.get, callback);
-  }
+      .withPath('/v1/shows/' + showId + '/episodes')
+      .withQueryParameters(options)
+      .build()
+      .execute(HttpManager.get, callback);
+  },
 
   /**
    * Create a playlist.
