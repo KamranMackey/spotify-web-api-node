@@ -505,6 +505,25 @@ SpotifyWebApi.prototype = {
   },
 
   /**
+   * Get tracks in a playlist.
+   * @param {string} playlistId The playlist's ID.
+   * @param {Object} [options] Optional options, such as fields.
+   * @param {requestCallback} [callback] Optional callback method to be called instead of the promise.
+   * @example getPlaylistTracks('thelinmichael', '3ktAYNcRHpazJ9qecm3ptn').then(...)
+   * @returns {Promise|undefined} A promise that if successful, resolves to an object that contains
+   * the tracks in the playlist. If rejected, it contains an error object. Not returned if a callback 
+   * is given.
+   */
+  getPlaylistTracks: function (playlistId, options, callback) {
+    return WebApiRequest.builder(this.getAccessToken())
+      .withPath('/v1/playlists/' + playlistId + '/tracks')
+      .withQueryParameters(options)
+      .build()
+      .execute(HttpManager.get, callback);
+  },
+
+
+  /**
    * Get a show.
    * @param {string} showId The show's ID.
    * @param {Object} [options] The options supplied to this request.
@@ -522,21 +541,22 @@ SpotifyWebApi.prototype = {
   },
 
   /**
-   * Get tracks in a playlist.
-   * @param {string} playlistId The playlist's ID.
-   * @param {Object} [options] Optional options, such as fields.
-   * @param {requestCallback} [callback] Optional callback method to be called instead of the promise.
-   * @example getPlaylistTracks('thelinmichael', '3ktAYNcRHpazJ9qecm3ptn').then(...)
-   * @returns {Promise|undefined} A promise that if successful, resolves to an object that containing
-   * the tracks in the playlist. If rejected, it contains an error object. Not returned if a callback is given.
+   * Get episodes in a show.
+   * @param {string} showId The show's ID.
+   * @param {Object} options Optional options, such as fields.
+   * @param {requestCallback} callback Optional callback method to be called instead of the promise.
+   * @example getShowEpisodes('0ofXAdFIQQRsCYj9754UFx').then(...)
+   * @returns {Promise|undefined} A promise that if successful, resolves to an object contains the
+   * episodes in the show. If rejected, it contains an error object. Not returned if a callback is
+   * given.
    */
-  getPlaylistTracks: function (playlistId, options, callback) {
+  getShowEpisodes: function(showId, options, callback) {
     return WebApiRequest.builder(this.getAccessToken())
-      .withPath('/v1/playlists/' + playlistId + '/tracks')
-      .withQueryParameters(options)
-      .build()
-      .execute(HttpManager.get, callback);
-  },
+    .withPath('/v1/shows/' + showId + '/episodes')
+    .withQueryParameters(options)
+    .build()
+    .execute(HttpManager.get, callback);
+  }
 
   /**
    * Create a playlist.
