@@ -2,8 +2,18 @@ export = SpotifyWebApi;
 
 declare module 'spotify-web-api-node' {
 
+  export class SpotifyWebApi {
+    constructor(credentials: Credentials);
+
+  }
+
+  interface Credentials {
+    clientId?: string,
+    clientSecret?: string,
+    redirectUri?: string,
+  }
+
   declare class SpotifyWebApi {
-    constructor(credentials?: SpotifyWebApi.Credentials);
 
     ///////////////////
     // Authentication and authorization methods
