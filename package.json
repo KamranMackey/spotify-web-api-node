@@ -15,8 +15,7 @@
   },
   "scripts": {
     "test": "jest",
-    "travis":
-      "npm test -- --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "travis": "npm test -- --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "precommit": "lint-staged"
   },
   "jest": {
@@ -24,7 +23,10 @@
     "testURL": "http://localhost/"
   },
   "lint-staged": {
-    "*.{js,json,css,md}": ["prettier --single-quote --write", "git add"]
+    "*.{js,json,css,md}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
   },
   "devDependencies": {
     "coveralls": "^2.13.3",
@@ -34,6 +36,7 @@
     "prettier": "1.12.1",
     "sinon": "~1.12.2"
   },
+  "types": "./typings/spotify-web-api-node.d.ts",
   "keywords": [
     "spotify",
     "echonest",
